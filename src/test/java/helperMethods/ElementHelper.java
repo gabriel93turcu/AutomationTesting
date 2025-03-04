@@ -91,5 +91,12 @@ public class ElementHelper {
         Assert.assertTrue(element.getText().contains(value));
     }
 
+    public void validateSizeList(By locator, int expectedSize) {
+        waitForPresenceList(locator);
+        List<WebElement> initialTableElement = driver.findElements(locator);
+        int initialTableSize = initialTableElement.size();
+        Assert.assertEquals(initialTableSize, expectedSize, "Dimensiunea listei nu este " + expectedSize + ".");
+    }
+
 
 }

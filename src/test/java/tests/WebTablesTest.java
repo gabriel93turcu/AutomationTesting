@@ -24,11 +24,8 @@ public class WebTablesTest extends SharedData {
 
         //identificăm o listă de elemente
         By initialTableElementLocator = By.xpath("//div[@class='rt-tbody']/div[@class='rt-tr-group']/div[@class='rt-tr -odd' or @class='rt-tr -even']");
-        List<WebElement> initialTableElement = elementHelper.getListElements(initialTableElementLocator);
-        int initialTableSize = initialTableElement.size();
         int expectedTableSize = 3;
-        Assert.assertEquals(initialTableSize, expectedTableSize, "Dimensiunea inițială a tabelului nu este 3.");
-
+        elementHelper.validateSizeList(initialTableElementLocator, expectedTableSize);
 
         //identificăm un element
         By addElement = By.id("addNewRecordButton");
@@ -62,11 +59,12 @@ public class WebTablesTest extends SharedData {
         elementHelper.clickLocator(submitElement);
 
         //validăm că avem 4 rânduri în tabel
-        List<WebElement> addTableElement = getDriver().findElements(By.xpath("//div[@class='rt-tbody']/div[@class='rt-tr-group']/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
-        Assert.assertEquals(addTableElement.size(), 4, "Dimensiunea tabelului nu este 4.");
+        By addTableElementLocator = By.xpath("//div[@class='rt-tbody']/div[@class='rt-tr-group']/div[@class='rt-tr -odd' or @class='rt-tr -even']");
+        elementHelper.validateSizeList(addTableElementLocator, 4);
 
         //validăm conținutul tabelului
-        String rowText = addTableElement.get(3).getText();
+        List<WebElement> addTableElementList = getDriver().findElements(By.xpath("//div[@class='rt-tbody']/div[@class='rt-tr-group']/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
+        String rowText = addTableElementList.get(3).getText();
         Assert.assertTrue(rowText.contains(firstnameValue));
         Assert.assertTrue(rowText.contains(lastNameValue));
         Assert.assertTrue(rowText.contains(userEmailValue));
@@ -77,7 +75,7 @@ public class WebTablesTest extends SharedData {
 
         //Edit Functionality
         By editElement = By.id("edit-record-4");
-        elementHelper.clickLocator(editElement);
+        elementHelper.clickJSLocator(editElement);
 
         By editSalaryElement = By.id("salary");
         String editSalaryValue = "30000";
@@ -95,21 +93,22 @@ public class WebTablesTest extends SharedData {
         elementHelper.clickLocator(editSubmitElement);
 
         //validăm valorile modificate
-        List<WebElement> editTableElement = getDriver().findElements(By.xpath("//div[@class='rt-tbody']/div[@class='rt-tr-group']/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
-        Assert.assertEquals(editTableElement.size(), 4, "Dimensiunea tabelului nu este 4.");
+        By editTableElementLocator = By.xpath("//div[@class='rt-tbody']/div[@class='rt-tr-group']/div[@class='rt-tr -odd' or @class='rt-tr -even']");
+        elementHelper.validateSizeList(editTableElementLocator, 4);
 
         //validăm conținutul tabelului
-        String editRowText = editTableElement.get(3).getText();
+        List<WebElement> editTableElementList = getDriver().findElements(By.xpath("//div[@class='rt-tbody']/div[@class='rt-tr-group']/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
+        String editRowText = editTableElementList.get(3).getText();
         Assert.assertTrue(editRowText.contains(editDepartmentValue));
         Assert.assertTrue(editRowText.contains(editSalaryValue));
         Assert.assertTrue(editRowText.contains(editAgeValue));
 
         //delete
         By deleteElement = By.id("delete-record-4");
-        elementHelper.clickLocator(deleteElement);
+        elementHelper.clickJSLocator(deleteElement);
 
-        List<WebElement> deleteTableElement = getDriver().findElements(By.xpath("//div[@class='rt-tbody']/div[@class='rt-tr-group']/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
-        Assert.assertEquals(deleteTableElement.size(), 3, "Dimensiunea tabelului este 3.");
+        By deleteTableElementLocator = By.xpath("//div[@class='rt-tbody']/div[@class='rt-tr-group']/div[@class='rt-tr -odd' or @class='rt-tr -even']");
+        elementHelper.validateSizeList(deleteTableElementLocator, 3);
 
 
         //await Selenium - așteaptă până la 10s, dar dacă nu sunt necesare 10s, testul trece mai departe
