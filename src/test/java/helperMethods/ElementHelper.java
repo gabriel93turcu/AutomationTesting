@@ -93,8 +93,8 @@ public class ElementHelper {
 
     public void validateSizeList(By locator, int expectedSize) {
         waitForPresenceList(locator);
-        List<WebElement> initialTableElement = driver.findElements(locator);
-        int initialTableSize = initialTableElement.size();
+        List<WebElement> initialList = driver.findElements(locator);
+        int initialTableSize = initialList.size();
         Assert.assertEquals(initialTableSize, expectedSize, "Dimensiunea listei nu este " + expectedSize + ".");
     }
 
