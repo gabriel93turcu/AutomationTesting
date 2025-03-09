@@ -98,5 +98,4 @@ public class ElementHelper {
         Assert.assertEquals(initialTableSize, expectedSize, "Dimensiunea listei nu este " + expectedSize + ".");
     }
 
-
 }
