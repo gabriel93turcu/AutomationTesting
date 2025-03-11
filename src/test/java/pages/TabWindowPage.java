@@ -1,22 +1,12 @@
 package pages;
 
-import helperMethods.ElementHelper;
-import helperMethods.TabHelper;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageLocators.IndexLocators;
 import pageLocators.TabWindowLocators;
 
-public class TabWindowPage {
-
-    private WebDriver driver;
-    private ElementHelper elementHelper;
-    private TabHelper tabHelper;
+public class TabWindowPage extends BasePage {
 
     public TabWindowPage(WebDriver driver) {
-        this.driver = driver;
-        elementHelper = new ElementHelper(driver);
-        tabHelper = new TabHelper(driver);
+        super(driver);
     }
 
     public void interactWithTab() {

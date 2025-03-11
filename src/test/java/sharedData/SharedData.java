@@ -1,7 +1,9 @@
 package sharedData;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -13,7 +15,7 @@ public class SharedData {
     @BeforeMethod
     public void prepareEnvironment() {
         //deschidem un browser
-        driver = new ChromeDriver();
+        driver = new EdgeDriver();
 
         //Accesăm o pagină web
         driver.get("https://demoqa.com/");

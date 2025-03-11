@@ -1,19 +1,12 @@
 package pages;
 
-import helperMethods.AlertHelper;
-import helperMethods.ElementHelper;
 import org.openqa.selenium.WebDriver;
 import pageLocators.AlertLocators;
 
-public class AlertPage {
-    private WebDriver driver;
-    private ElementHelper elementHelper;
-    private AlertHelper alertHelper;
+public class AlertPage extends BasePage {
 
     public AlertPage(WebDriver driver) {
-        this.driver = driver;
-        elementHelper = new ElementHelper(driver);
-        alertHelper = new AlertHelper(driver);
+        super(driver);
     }
 
     public void interaptWithAcceptAlert() {
