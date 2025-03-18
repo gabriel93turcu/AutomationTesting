@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.AlertModel;
 import org.openqa.selenium.WebDriver;
 import pageLocators.AlertLocators;
 
@@ -24,8 +25,8 @@ public class AlertPage extends BasePage {
         alertHelper.cancelAlert();
     }
 
-    public void interactWithValueAlert(String value) {
+    public void interactWithValueAlert(AlertModel testData) {
         elementHelper.clickLocator(AlertLocators.alertTextElement);
-        alertHelper.fillTextAlert(value);
+        alertHelper.fillTextAlert(testData.getPromptData());
     }
 }

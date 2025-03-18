@@ -1,0 +1,13 @@
+{
+  "firstnameValue": "Gabriel",
+  "lastNameValue": "Turcu",
+  "userEmailValue": "g.t@test123.com",
+  "ageValue": "20",
+  "salaryValue": "20000",
+  "departmentValue": "QA",
+  "editSalaryValue": "30000",
+  "editDepartmentValue": "Team lead QA",
+  "editAgeValue": "23",
+  "newTableSize": 4,
+  "actualTableSize": 3
+}

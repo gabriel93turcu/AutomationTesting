@@ -1,0 +1,21 @@
+{
+  "firstNameValue": "Gabriel",
+  "lastNameValue": "Turcu",
+  "emailValue": "t.g@test.ro",
+  "genderValue": "Male",
+  "mobileValue": "0740123456",
+  "subjectValues": [
+    "Arts",
+    "Accounting",
+    "Maths"
+  ],
+  "hobbiesValues": [
+    "Sports",
+    "Reading"
+  ],
+  "pictureValue": "src/test/resources/Screenshot.png",
+  "addressValue": "Avram Iancu",
+  "stateValue": "NCR",
+  "cityValue": "Noida",
+  "expectedMessage": "Thanks for submitting the form"
+}
