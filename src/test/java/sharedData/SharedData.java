@@ -1,8 +1,7 @@
 package sharedData;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,9 +10,14 @@ import java.time.Duration;
 
 public class SharedData {
     private WebDriver driver;
+    private String testName;
 
     @BeforeMethod
     public void prepareEnvironment() {
+        //găsim numele clasei
+        testName = this.getClass().getSimpleName();
+        LoggerUtility.startTest(testName);
+
         //deschidem un browser
         driver = new EdgeDriver();
 
@@ -30,7 +34,9 @@ public class SharedData {
     @AfterMethod
     public void clearEnvironment() {
         driver.quit();
+        LoggerUtility.finishTest(testName);
     }
+
 
     public WebDriver getDriver() {
         return driver;

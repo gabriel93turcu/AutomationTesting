@@ -8,5 +8,4 @@ public class AlertLocators {
     public static final By alertTimerElement = By.id("timerAlertButton");
     public static final By alertOkCancelElement = By.id("confirmButton");
     public static final By alertTextElement = By.id("promtButton");
-
 }

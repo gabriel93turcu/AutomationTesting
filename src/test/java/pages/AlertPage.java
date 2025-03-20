@@ -21,12 +21,12 @@ public class AlertPage extends BasePage {
     }
 
     public void  interactWithCancelAlert() {
-        elementHelper.clickLocator(AlertLocators.alertOkCancelElement);
+        elementHelper.clickJSLocator(AlertLocators.alertOkCancelElement);
         alertHelper.cancelAlert();
     }
 
     public void interactWithValueAlert(AlertModel testData) {
-        elementHelper.clickLocator(AlertLocators.alertTextElement);
+        elementHelper.clickJSLocator(AlertLocators.alertTextElement);
         alertHelper.fillTextAlert(testData.getPromptData());
     }
 }
