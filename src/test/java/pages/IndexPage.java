@@ -3,7 +3,6 @@ package pages;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import pageLocators.IndexLocators;
-import pageLocators.PracticeFormLocators;
 
 public class IndexPage extends BasePage {
 
