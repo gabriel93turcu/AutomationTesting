@@ -5,13 +5,14 @@ import org.testng.annotations.Test;
 import pages.IndexPage;
 import pages.PracticeFormPage;
 import sharedData.SharedData;
+import suites.TestSuite;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class PracticeFormTest extends SharedData {
 
-    @Test
+    @Test (groups = {TestSuite.REGRESSION_SUITE, TestSuite.FORM_SUITE})
     public void metodaTest() {
 
         PracticeFormModel testData = new PracticeFormModel("src/test/resources/testData/PracticeFormData.json");
