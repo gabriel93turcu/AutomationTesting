@@ -12,7 +12,7 @@ public class SharedData {
     private WebDriver driver;
     private String testName;
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void prepareEnvironment() {
         //găsim numele clasei
         testName = this.getClass().getSimpleName();
@@ -31,7 +31,7 @@ public class SharedData {
 
     }
 
-    @AfterMethod
+    @AfterMethod (alwaysRun = true)
     public void clearEnvironment() {
         driver.quit();
         LoggerUtility.finishTest(testName);
