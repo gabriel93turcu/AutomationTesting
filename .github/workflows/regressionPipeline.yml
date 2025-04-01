@@ -9,8 +9,14 @@
 name: Regression Pipeline
 
 on:
-  push:
-    branches: [ "master" ]
+  workflow_dispatch:
+    inputs:
+      workers:
+        description: 'Specify number of workers(1-4): '
+        required: true
+        default: 2
+        type: number
+
 
 jobs:
   build:
@@ -27,4 +33,4 @@ jobs:
         cache: maven
         
     - name: Run Automation Tests
-      run: mvn clean install -Dcicd=true
+      run: mvn clean install -Dcicd=true -Dgroups=@regression -Dthreads=${{ github.event.inputs.workers }}
