@@ -2,8 +2,8 @@ package sharedData;
 
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -18,10 +18,15 @@ public class SharedData {
         //găsim numele clasei
         testName = this.getClass().getSimpleName();
 
-        EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless=new");
-        //deschidem un browser
-        driver = new EdgeDriver(options);
+        String remoteEnv = System.getProperty("cicd");
+        if(Boolean.parseBoolean(remoteEnv)){
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless=new");
+            //deschidem un browser
+            driver = new ChromeDriver(options);
+        } else {
+            driver = new ChromeDriver();
+        }
 
         //Accesăm o pagină web
         driver.get("https://demoqa.com/");
