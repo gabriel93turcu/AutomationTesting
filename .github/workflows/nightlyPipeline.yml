@@ -6,22 +6,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Custom Pipeline
+name: Nightly Pipeline
 
 on:
+  schedule:
+    - cron: '0 2 * * 1-5'  # Runs at 2 AM UTC on Monday through Friday
   workflow_dispatch:
-    inputs:
-      workers:
-        description: 'Specify number of workers(1-4):'
-        required: true
-        default: 2
-        type: number
-      suite:
-        description: 'Specify suite tag or tags separated by ,'
-        required: true
-        default: '@alertFrame,@form'
-
-
 
 jobs:
   build:
@@ -38,4 +28,4 @@ jobs:
         cache: maven
         
     - name: Run Automation Tests
-      run: mvn clean install -Dcicd=true -Dgroups=${{ github.event.inputs.suite }} -Dthreads=${{ github.event.inputs.workers }}
+      run: mvn clean install -Dcicd=true -Dgroups=@regression -Dthreads=4
